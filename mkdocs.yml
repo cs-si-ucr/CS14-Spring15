@@ -1,0 +1,6 @@
+site_name: CS14 SI Labs: Spring 2015
+pages:
+    - [index.md "Home"]
+    - [lab_week_01.md, "Lab Week 1"]
+theme: readthedocs
+
