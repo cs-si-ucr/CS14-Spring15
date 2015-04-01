@@ -109,7 +109,7 @@ and change the types where needed. But even expert programmers
 start to <a href="http://www.viva64.com/en/b/0260/print/">make mistakes</a>
 copy and pasting.</p>
 <h2 id="introducing-templates">Introducing templates!</h2>
-<p>The solution for this problem are function-templates and class-templates which in a way generate this "copy-and-paste" code for you.</p>
+<p>The solution for this problem is function-templates and class-templates which in a way generate this "copy-and-paste" code for you.</p>
 <p>In fact, you've already been using templates all-along. The standard
 library container, vector, which makes dynamic arrays easy to use is
 also one of these template classes.</p>
@@ -164,7 +164,7 @@ LinkedList&lt;T&gt;::push_front(T val) {
 <p>For more info on templates check out <a href="https://isocpp.org/wiki/faq/templates#overview-templates">this FAQ</a>!</p>
 <h2 id="exercises">Exercises</h2>
 <p>Implement a vector class template. You should have an implementation of IntVector from CS12 that makes this much easier! </p>
-<p><strong>Pro-Tip: before implementing the class as a class template, <code>typedef</code> the type <code>T</code> as a integer and replace type with <code>T</code> as needed.</strong>
+<p><strong>Pro-Tip: before implementing the class as a class template, <code>typedef</code> the type <code>T</code> as an integer and replace type with <code>T</code> as needed.</strong>
 e.g.</p>
 <pre><code class="cpp">typedef int T; // give the int an alias which is T
 T my_int = 42;
@@ -187,7 +187,7 @@ MyVector&lt;int&gt; another_vec;
 another_vec.push_back(42);
 </code></pre>
 
-<h2 id="strech-goal-exercise">Strech-goal exercise:</h2>
+<h2 id="stretch-goal-exercise">Stretch-goal exercise:</h2>
 <p>Rewrite your IntList as a class template!</p>
 
             </div>
