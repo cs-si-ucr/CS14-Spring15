@@ -82,7 +82,7 @@
 that is formed by connecting a group of nodes called a "Linked List".</p>
 <p>In order to implement a Linked List, you must define the structure
 for an individual node. </p>
-<p>For a singlely-linked list of integers, it may look something like:</p>
+<p>For a singly-linked list of integers, it may look something like:</p>
 <pre><code class="cpp">struct IntNode{
     int val;
     IntNode * next;
@@ -95,7 +95,7 @@ insert/remove elements from the list
 e.g.</p>
 <pre><code class="cpp">class IntLinkedList {
     public:
-        void push_back(int val);
+        void push_front(int val);
         // ...
     private:
         IntNode * head;
@@ -108,7 +108,8 @@ e.g.</p>
 and change the types where needed. But even expert programmers 
 start to <a href="http://www.viva64.com/en/b/0260/print/">make mistakes</a>
 copy and pasting.</p>
-<p>The solution for this problem are function-templates and class-templates. </p>
+<h2 id="introducing-templates">Introducing templates!</h2>
+<p>The solution for this problem are function-templates and class-templates which in a way generate this "copy-and-paste" code for you.</p>
 <p>In fact, you've already been using templates all-along. The standard
 library container, vector, which makes dynamic arrays easy to use is
 also one of these template classes.</p>
@@ -119,7 +120,9 @@ vector&lt;string&gt; words; // creates a vector of strings
 </code></pre>
 
 <p>To create a new class template, before our class declaration we use the keyword <code>template</code> followed by a type parameter inside "angle-brackets"
-e.g. <code>template&lt;typename T&gt;</code>. The keyword <code>typename</code> tells the compiler that T is a placeholder for an actual type.</p>
+e.g. <code>template&lt;typename T&gt;</code>. The keyword <code>typename</code> tells the compiler
+that <code>T</code> is a placeholder for an actual type. </p>
+<p><em>Note: <code>T</code> is a common name for a placeholder type, this name like parameter names should be a tell for how the class is used - e.g. a common typename for classes that take in any container such as Vectors or Lists is <code>Container</code></em></p>
 <p>Let's say, we want to create a templated version of our Node and List.</p>
 <p><code>IntNode</code> becomes:</p>
 <pre><code class="cpp">template&lt;typename T&gt;
@@ -133,7 +136,7 @@ struct Node {
 <pre><code class="cpp">template&lt;typename T&gt;
 class LinkedList {
     public:
-        void push_back(T val);
+        void push_front(T val);
         // ...
     private:
         Node&lt;T&gt; * head;
@@ -146,11 +149,40 @@ class LinkedList {
 
 <p>In order to template functions and method, we do something similar.</p>
 <p>For example, if we want to define the templated LinkedList's
-<code>push_back</code> method:</p>
+<code>push_front</code> method:</p>
 <pre><code class="cpp">template&lt;typename T&gt;
-LinkedList&lt;T&gt;::push_back(T val) {
+LinkedList&lt;T&gt;::push_front(T val) {
+    Node * new_node = new Node&lt;T&gt;();
+    new_node -&gt; val = val;
 
+    Node * old_head = this -&gt; head;
+    new_node -&gt; next = old_head;
+    this -&gt; head = new_node;
 }
+</code></pre>
+
+<p>For more info on templates check out <a href="https://isocpp.org/wiki/faq/templates#overview-templates">this FAQ</a>!</p>
+<h2 id="exercises">Exercises</h2>
+<p>Implement a doubly linked list class. A doubly linked list is a
+linked list structure that keeps track of both the head and its tail
+(aka the last element of the list).</p>
+<p><strong>Pro-Tip: before implementing the class as a class template, <code>typedef</code> the
+type <code>T</code> as a integer.</strong></p>
+<p><strong>This give you much nicer error messages and makes it easier to debug.</strong></p>
+<p>Example Usage, should implement at least the following methods:</p>
+<pre><code class="cpp">DoublyLinkedList&lt;string&gt; my_list;
+my_list.push_back(&quot;CS14&quot;);
+my_list.push_back(&quot;World&quot;);
+my_list.push_front(&quot;Hello&quot;);
+cout &lt;&lt; my_list.front() &lt;&lt; endl; // &quot;Hello&quot;
+cout &lt;&lt; my_list.back() &lt;&lt; endl; // &quot;World&quot;
+my_list.pop_back();
+cout &lt;&lt; my_list.back() &lt;&lt; endl; // &quot;CS14&quot;
+my_list.pop_front();
+cout &lt;&lt; my_list.front() &lt;&lt; endl; // &quot;CS14&quot;
+
+DoublyLinkedList&lt;int&gt; my_other_list;
+my_other_list.push_back(42);
 </code></pre>
 
 
