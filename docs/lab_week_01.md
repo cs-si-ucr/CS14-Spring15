@@ -122,13 +122,13 @@ Example Usage, should implement at least the following methods:
 MyVector<string> vec;
 vec.push_back("CS14");
 vec.push_back("World");
-vec.push_front("Hello");
+vec.insert("Hello", 0); 
 cout << vec.front() << endl; // "Hello"
 cout << vec.back() << endl; // "World"
 vec.pop_back();
 cout << vec.back() << endl; // "CS14"
-vec.pop_front();
-cout << vec.front() << endl; // "CS14"
+vec.pop_back();
+cout << vec.back() << endl; // "Hello"
 
 MyVector<int> another_vec;
 another_vec.push_back(42);
