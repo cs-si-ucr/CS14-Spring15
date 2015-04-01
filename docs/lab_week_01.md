@@ -37,7 +37,7 @@ copy and pasting.
 
 Introducing templates!
 ---------------------
-The solution for this problem are function-templates and class-templates which in a way generate this "copy-and-paste" code for you.
+The solution for this problem is function-templates and class-templates which in a way generate this "copy-and-paste" code for you.
 
 In fact, you've already been using templates all-along. The standard
 library container, vector, which makes dynamic arrays easy to use is
@@ -108,7 +108,7 @@ Exercises
 ---------
 Implement a vector class template. You should have an implementation of IntVector from CS12 that makes this much easier! 
 
-**Pro-Tip: before implementing the class as a class template, `typedef` the type `T` as a integer and replace type with `T` as needed.**
+**Pro-Tip: before implementing the class as a class template, `typedef` the type `T` as an integer and replace type with `T` as needed.**
 e.g.
 ```cpp
 typedef int T; // give the int an alias which is T
@@ -133,7 +133,7 @@ cout << vec.front() << endl; // "CS14"
 MyVector<int> another_vec;
 another_vec.push_back(42);
 ```
-Strech-goal exercise:
+Stretch-goal exercise:
 ---------------------
 Rewrite your IntList as a class template!
 
