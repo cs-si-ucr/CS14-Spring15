@@ -175,13 +175,13 @@ T my_int = 42;
 <pre><code class="cpp">MyVector&lt;string&gt; vec;
 vec.push_back(&quot;CS14&quot;);
 vec.push_back(&quot;World&quot;);
-vec.push_front(&quot;Hello&quot;);
+vec.insert(&quot;Hello&quot;, 0); 
 cout &lt;&lt; vec.front() &lt;&lt; endl; // &quot;Hello&quot;
 cout &lt;&lt; vec.back() &lt;&lt; endl; // &quot;World&quot;
 vec.pop_back();
 cout &lt;&lt; vec.back() &lt;&lt; endl; // &quot;CS14&quot;
-vec.pop_front();
-cout &lt;&lt; vec.front() &lt;&lt; endl; // &quot;CS14&quot;
+vec.pop_back();
+cout &lt;&lt; vec.back() &lt;&lt; endl; // &quot;Hello&quot;
 
 MyVector&lt;int&gt; another_vec;
 another_vec.push_back(42);
