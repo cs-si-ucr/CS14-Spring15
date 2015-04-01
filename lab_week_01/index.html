@@ -163,28 +163,32 @@ LinkedList&lt;T&gt;::push_front(T val) {
 
 <p>For more info on templates check out <a href="https://isocpp.org/wiki/faq/templates#overview-templates">this FAQ</a>!</p>
 <h2 id="exercises">Exercises</h2>
-<p>Implement a doubly linked list class. A doubly linked list is a
-linked list structure that keeps track of both the head and its tail
-(aka the last element of the list).</p>
-<p><strong>Pro-Tip: before implementing the class as a class template, <code>typedef</code> the
-type <code>T</code> as a integer.</strong></p>
-<p><strong>This give you much nicer error messages and makes it easier to debug.</strong></p>
-<p>Example Usage, should implement at least the following methods:</p>
-<pre><code class="cpp">DoublyLinkedList&lt;string&gt; my_list;
-my_list.push_back(&quot;CS14&quot;);
-my_list.push_back(&quot;World&quot;);
-my_list.push_front(&quot;Hello&quot;);
-cout &lt;&lt; my_list.front() &lt;&lt; endl; // &quot;Hello&quot;
-cout &lt;&lt; my_list.back() &lt;&lt; endl; // &quot;World&quot;
-my_list.pop_back();
-cout &lt;&lt; my_list.back() &lt;&lt; endl; // &quot;CS14&quot;
-my_list.pop_front();
-cout &lt;&lt; my_list.front() &lt;&lt; endl; // &quot;CS14&quot;
-
-DoublyLinkedList&lt;int&gt; my_other_list;
-my_other_list.push_back(42);
+<p>Implement a vector class template. You should have an implementation of IntVector from CS12 that makes this much easier! </p>
+<p><strong>Pro-Tip: before implementing the class as a class template, <code>typedef</code> the type <code>T</code> as a integer and replace type with <code>T</code> as needed.</strong>
+e.g.</p>
+<pre><code class="cpp">typedef int T; // give the int an alias which is T
+T my_int = 42;
 </code></pre>
 
+<p><strong>This give you much nicer error messages and makes it easier to debug.</strong></p>
+<p>Example Usage, should implement at least the following methods:</p>
+<pre><code class="cpp">MyVector&lt;string&gt; vec;
+vec.push_back(&quot;CS14&quot;);
+vec.push_back(&quot;World&quot;);
+vec.push_front(&quot;Hello&quot;);
+cout &lt;&lt; vec.front() &lt;&lt; endl; // &quot;Hello&quot;
+cout &lt;&lt; vec.back() &lt;&lt; endl; // &quot;World&quot;
+vec.pop_back();
+cout &lt;&lt; vec.back() &lt;&lt; endl; // &quot;CS14&quot;
+vec.pop_front();
+cout &lt;&lt; vec.front() &lt;&lt; endl; // &quot;CS14&quot;
+
+MyVector&lt;int&gt; another_vec;
+another_vec.push_back(42);
+</code></pre>
+
+<h2 id="strech-goal-exercise">Strech-goal exercise:</h2>
+<p>Rewrite your IntList as a class template!</p>
 
             </div>
           </div>
