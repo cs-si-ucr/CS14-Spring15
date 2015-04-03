@@ -1,4 +1,4 @@
-CS14 Spring 2015: Learning Community Syllabus
+CS14 Spring 2015: SI Syllabus
 ================================
 
 General Info
@@ -8,8 +8,8 @@ General Info
 - **SI Leader:** Alex Gonzales
 - **Website:** [CS14 SI Labs](http://cs-si-ucr.github.io/CS14-Spring15)
 
-SI Section EN12 Schedule
-------------------------
+Learning Community Section EN12 Schedule
+----------------------------------------
 |    Day    |       Time      |Location|Session |
 |-----------|:---------------:|--------|------- |
 |Wednesday  |8:00 am - 10:00am| WCH 135| Lab    |
