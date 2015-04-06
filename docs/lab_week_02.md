@@ -5,6 +5,7 @@ Lab 2: The Standard Template Library
 [std-swap]:http://en.cppreference.com/w/cpp/algorithm/swap "cppreference for std::swap"
 [std-sort]:http://en.cppreference.com/w/cpp/algorithm/sort "cppreference for std::sort"
 [STL-beautiful]:http://www.bfilipek.com/2014/12/top-5-beautiful-c-std-algorithms.html "Cool examples that showcase use of the STL"
+[iterator-categories]:http://en.cppreference.com/w/cpp/iterator#Iterator_categories
 [STL-video]:https://channel9.msdn.com/Series/C9-Lectures-Stephan-T-Lavavej-Standard-Template-Library-STL-/C9-Lectures-Introduction-to-STL-with-Stephan-T-Lavavej  "Lecture that introduces STL"
 
 [Vec-iterator-Image]:http://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg
@@ -42,7 +43,7 @@ while(vec_iterator != vec.end()) {
     cout << *vec_iterator << ' ';
     vec_iterator++; //move the iterator up one 
 }
-// Outputs "1 2 3"
+// Outputs "1 2 3 "
 ```
 Note the `vec.begin()` and `vec.end()` calls in the above
 code block. Both of these return an iterator to different
@@ -52,8 +53,37 @@ iterator of type `vector<int>::iterator`.
 `vec.begin()` returns an iterator to beginning of `vec`. However, `vec.end()` returns an iterator to the element **one past** the last element.
 
 This is pictured below (image from en.cppreference.com)
-![blah][Vec-iterator-Image]
+![vector::begin and vector::end diagram][Vec-iterator-Image]
 
+
+A lot of algorithms in the STL, including `std::sort` 
+expect iterators as arguments. [(and usually specific types of iterators)][iterator-categories]
+
+One of the function prototypes for `std::sort` looks 
+like this:
+```cpp
+template<typename RandomIt>
+void sort(RandomIt first, RandomIt last);
+```
+
+```cpp
+vector<int> vec {42, 8, 3}
+
+// sort all of the elements in vec in ascending order
+sort(vec.begin(), vec.end());
+
+/*
+    We can use auto to omit the type
+    on the left-hand side in C++11!
+
+    Also, this is a way to iterate through a 
+    vector using iterators with a for-loop!
+*/
+for(auto vec_iter = vec.begin(), vec_iter != v.end(); vec_iter++) {
+    cout << *vec_iter << ' ';
+}
+// Outputs "3 8 42 "
+```
 
 Cool References
 ---------------
