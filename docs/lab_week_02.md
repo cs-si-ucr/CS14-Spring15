@@ -7,6 +7,8 @@ Lab 2: The Standard Template Library
 [STL-beautiful]:http://www.bfilipek.com/2014/12/top-5-beautiful-c-std-algorithms.html "Cool examples that showcase use of the STL"
 [STL-video]:https://channel9.msdn.com/Series/C9-Lectures-Stephan-T-Lavavej-Standard-Template-Library-STL-/C9-Lectures-Introduction-to-STL-with-Stephan-T-Lavavej  "Lecture that introduces STL"
 
+[Vec-iterator-Image]:http://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg
+
 Like templates, you've already been using a
 small portiton of the Standard Template Library already.
 
@@ -42,8 +44,15 @@ while(vec_iterator != vec.end()) {
 }
 // Outputs "1 2 3"
 ```
-Note the `vec.
+Note the `vec.begin()` and `vec.end()` calls in the above
+code block. Both of these return an iterator to different
+positions in the vector container. Both also return an
+iterator of type `vector<int>::iterator`.
 
+`vec.begin()` returns an iterator to beginning of `vec`. However, `vec.end()` returns an iterator to the element **one past** the last element.
+
+This is pictured below (image from en.cppreference.com)
+![blah][Vec-iterator-Image]
 
 
 Cool References
