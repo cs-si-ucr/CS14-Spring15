@@ -33,13 +33,17 @@ The easiest way to think about iterators is to think of them as fancy pointers (
 *"Enough talk, show me the code!"* Here's how you can iterate through a vector using iterators!
 ```cpp
 vector<int> vec {1, 2, 3};
-vector<int>::iterator vec_iterator = v.begin();
-while(vec_iterator != v.end()) {
+vector<int>::iterator vec_iterator = vec.begin();
+
+// go through the vector until we hit vec.end()
+while(vec_iterator != vec.end()) {
     cout << *vec_iterator << ' ';
-    vec_iterator++;
+    vec_iterator++; //move the iterator up one 
 }
 // Outputs "1 2 3"
 ```
+Note the `vec.
+
 
 
 Cool References
