@@ -21,6 +21,25 @@ as [`std::swap`][std-swap] to the more complex [`std::sort`][std-sort].
 
 The motivation for learning and mastering the STL is to write [code that is clear and concise][STL-beautiful].  
 
+Iterators
+---------
+Probably the most important and inescapable concept in the
+STL is the types we call iterators.
+
+Iterators are used to generalize the iterator over a STL container (or your own containers that implement iterators). 
+
+The easiest way to think about iterators is to think of them as fancy pointers (again, this conceptual model works for 80% of use cases - it's not entirely correct).
+
+*"Enough talk, show me the code!"* Here's how you can iterate through a vector using iterators!
+```cpp
+vector<int> vec {1, 2, 3};
+vector<int>::iterator vec_iterator = v.begin();
+while(vec_iterator != v.end()) {
+    cout << *vec_iterator << ' ';
+    vec_iterator++;
+}
+// Outputs "1 2 3"
+```
 
 
 Cool References
