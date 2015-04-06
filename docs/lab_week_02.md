@@ -67,7 +67,7 @@ void sort(RandomIt first, RandomIt last);
 ```
 
 ```cpp
-vector<int> vec {42, 8, 3}
+vector<int> vec {42, 8, 3};
 
 // sort all of the elements in vec in ascending order
 sort(vec.begin(), vec.end());
