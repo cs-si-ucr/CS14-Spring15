@@ -84,6 +84,54 @@ for(auto vec_iter = vec.begin(), vec_iter != vec.end(); vec_iter++) {
 }
 // Outputs "3 8 42 "
 ```
+That's cool and all, but what if we want to sort
+the container in desending order: function objects
+come to the rescue!
+
+Function Objects
+----------------
+Back in CS12, you learned that you can **overload** 
+special operators while defining classes. The prototype
+of a method of a rational number class which overloads the 
+`+` operator may look like this (assume the `gcd` function is defined):
+
+```cpp
+bool operator+(const Rational & other) {
+    int new_denom = gcd(this -> denom, other.denom);
+    int this_multipler = new_denom/(this -> denom);
+    int other_multipler = new_denom/(other.denom);
+    int new_numer = this_multipler  * this -> numer +
+                    other_multipler * other.numer;
+    return Rational(new_numer, new_denom);
+}
+```
+You can also overload the function call operator by
+defining a function with the name `operator()`.
+
+e.g.
+```cpp
+class Counter {
+    public:
+        Counter() :x(0) {}
+        Counter(int x) : x(x) {}
+        void operator()() {
+            ++count;
+        }
+        int get_count() {
+            return count;
+        }
+    private:
+        int count;
+};
+int main() {
+    Counter count();
+    count();
+    count();
+    cout << count.get_count() << endl;
+    // "Outputs 2"
+}
+```
+
 
 Cool References
 ---------------
