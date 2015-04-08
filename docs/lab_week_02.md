@@ -130,8 +130,8 @@ using namespace std;
 
 class Counter {
     public:
-        Counter() :x(0) {}
-        Counter(int x) : x(x) {}
+        Counter() :count(0) {}
+        Counter(int x) : count(count) {}
         void operator() () {
             ++count;
         }
@@ -142,7 +142,7 @@ class Counter {
         int count;
 };
 int main() {
-    Counter count();
+    Counter count;
     count();
     count();
     cout << count.get_count() << endl;
