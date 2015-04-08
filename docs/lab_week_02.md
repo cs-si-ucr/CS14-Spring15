@@ -6,9 +6,13 @@ Lab 2: The Standard Template Library
 [std-sort]:http://en.cppreference.com/w/cpp/algorithm/sort "cppreference for std::sort"
 [STL-beautiful]:http://www.bfilipek.com/2014/12/top-5-beautiful-c-std-algorithms.html "Cool examples that showcase use of the STL"
 [iterator-categories]:http://en.cppreference.com/w/cpp/iterator#Iterator_categories
-[STL-video]:https://channel9.msdn.com/Series/C9-Lectures-Stephan-T-Lavavej-Standard-Template-Library-STL-/C9-Lectures-Introduction-to-STL-with-Stephan-T-Lavavej  "Lecture that introduces STL"
-
 [Vec-iterator-Image]:http://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg
+[std-copy_if]:http://en.cppreference.com/w/cpp/algorithm/copy  "cppreference for std::copy_if"
+[cpp-compare]:http://en.cppreference.com/w/cpp/concept/Compare "cppreference for the C++ concept of an object of type Compare"
+[std-distance]:http://en.cppreference.com/w/cpp/iterator/distance "cppreference for std::distance"
+[std-inplace_merge]:http://en.cppreference.com/w/cpp/algorithm/inplace_merge "cppreference for std::inplace_merge"
+
+[STL-video]:https://channel9.msdn.com/Series/C9-Lectures-Stephan-T-Lavavej-Standard-Template-Library-STL-/C9-Lectures-Introduction-to-STL-with-Stephan-T-Lavavej  "Lecture that introduces STL"
 
 Like templates, you've already been using a
 small portiton of the Standard Template Library already.
@@ -59,31 +63,42 @@ This is pictured below (image from en.cppreference.com)
 A lot of algorithms in the STL, including `std::sort` 
 expect iterators as arguments. [(and usually specific types of iterators)][iterator-categories]
 
-One of the function prototypes for `std::sort` looks 
-like this:
+One of the function prototypes for [`std::sort`][std-sort] looks 
+something like this:
 ```cpp
 template<typename RandomIt>
-void sort(RandomIt first, RandomIt last);
+void sort(Iterator first, Iterator last);
 ```
+As long as we provide the sort function valid iterators, it will sort
+the elements within the range [first, last).
 
 ```cpp
-vector<int> vec {42, 8, 3};
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main() {
+    vector<int> vec {42, 8, 3};
 
-// sort all of the elements in vec in ascending order
-sort(vec.begin(), vec.end());
+    // sort all of the elements in vec in ascending order
+    sort(vec.begin(), vec.end());
 
-/*
-    We can use auto to omit the type
-    on the left-hand side in C++11!
+    /*
+        We can use auto to omit the type
+        on the left-hand side in C++11!
 
-    Also, this is a way to iterate through a 
-    vector using iterators with a for-loop!
-*/
-for(auto vec_iter = vec.begin(), vec_iter != vec.end(); vec_iter++) {
-    cout << *vec_iter << ' ';
+        Also, this is a way to iterate through a 
+        vector using iterators with a for-loop!
+    */
+    for(auto vec_iter = vec.begin(), vec_iter != vec.end(); vec_iter++){
+        cout << *vec_iter << ' ';
+    }
 }
-// Outputs "3 8 42 "
 ```
+`
+**Try it yourself - before compiling guess what the above program outputs.**
+
+
 That's cool and all, but what if we want to sort
 the container in desending order: function objects
 come to the rescue!
@@ -110,11 +125,14 @@ defining a function with the name `operator()`.
 
 e.g.
 ```cpp
+#include <iostream>
+using namespace std;
+
 class Counter {
     public:
         Counter() :x(0) {}
         Counter(int x) : x(x) {}
-        void operator()() {
+        void operator() () {
             ++count;
         }
         int get_count() {
@@ -128,10 +146,103 @@ int main() {
     count();
     count();
     cout << count.get_count() << endl;
-    // "Outputs 2"
 }
 ```
+**Try it yourself - before compiling guess what the above program outputs.**
 
+
+Overloading the function call operator automatically makes the
+class a "function object". This becomes useful in a number of 
+STL algorithms. Some of the algorithms include [`std::sort`][std-sort]  
+and [`std::copy_if`][std-copy_if]. The most common types of 
+function objects that these algorithms accept as input are
+[comparsion function objects][cpp-compare] which return
+true if the first argument is *considered* less than the second and
+a unary predicate which returns true if it satisifies some condition.
+
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <list>
+using namespace std;
+
+class SortGreater {
+    public:
+        bool operator() (const int & a, const int & b ) const {
+            return a > y;
+        }
+};
+
+class IsEven {
+    public:
+        bool operator() (const int & x) const {
+            return x % 2;
+        }
+};
+
+int main() {
+    vector<int> from_vector {1, 2, 3, 4};
+    list<int> to_list(2);
+
+    sort(from_vector.begin(), from_vector.end(), SortGreater());
+    for (int elem : from_vector) {
+        cout << elem << ' ';
+    }
+
+    copy_if(from_vector.begin(), from_vector.end(), to_list.begin(), IsEven());
+
+    for (int elem : to_list) {
+        cout << elem << ' ';
+    }
+}
+```
+**Try it yourself - before compiling guess what the above program outputs.**
+
+Exercise 1
+----------
+Implement your own STL-like reverse function, the reverse function
+will have the following prototype: 
+
+```cpp
+template <typename BidirectionalIter>
+void my_reverse(BidirectionalIter first, BidirectionalIter last)
+```
+The function should reverse a portion of a container given two Bidirectional iterators (iterators you can move forward and backwards).
+The elements within the range [first, last) are reversed.
+
+Exercise 2
+----------
+Implement rotate as an STL-like function. The rotate function
+will have the following prototype:
+
+```cpp
+template <typename BidirectionalIter>
+void my_rotate(BidirectionalIter first, BidirectionalIter n_first,
+               BidirectionalIter last)
+```
+
+The function should rotate the container given three Bidirectional
+iterators: first, n_first and last. The rotate should make n_first
+the first element in the container and n_first-1 the last element
+in the container. The new order should be [n_first, ..., last,  first, ... n_first-1]
+
+*Super Hint: The reverse function you just implement should really
+come in handy!*
+
+Stretch-goal Exercise
+---------------------
+Implement mergesort as an STL-like function. The mergesort function 
+will have the following prototype:
+
+```cpp
+template <typename BidirectionalIter>
+void mergesort(BidirectionalIter first, BidirectionalIter last)
+```
+Given two Bidirectional Iterators, sort the container's elements
+within the range [first, last). 
+
+*Ultra-hint: [`std::inplace_merge`][std-inplace_merge] and [`std::distance`][std-distance] are lifesavers here!*
 
 Cool References
 ---------------
