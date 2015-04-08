@@ -14,11 +14,9 @@ Lab 2: The Standard Template Library
 
 [STL-video]:https://channel9.msdn.com/Series/C9-Lectures-Stephan-T-Lavavej-Standard-Template-Library-STL-/C9-Lectures-Introduction-to-STL-with-Stephan-T-Lavavej  "Lecture that introduces STL"
 
-Like templates, you've already been using a
-small portiton of the Standard Template Library already.
+Like templates, you've already been using a small portion of the Standard Template Library already.
 
-Namely, you're already well-acquiented with the 
-contigous container [`std::vector`][std-vector] and maybe even [`std::list`][std-list].
+Namely, you're already well-acquainted with the contiguous container [`std::vector`][std-vector] and maybe even [`std::list`][std-list].
 
 The Standard Template Library, or the **STL** for short, is
 a library that provides many reusable (or generic) algorithms and data structures that programmers would otherwise have to reimplement themselves.
@@ -26,14 +24,14 @@ a library that provides many reusable (or generic) algorithms and data structure
 Some of these algorithms range from simple algorithms such
 as [`std::swap`][std-swap] to the more complex [`std::sort`][std-sort].
 
-The motivation for learning and mastering the STL is to write [code that is clear and concise][STL-beautiful].  
+The motivation for learning and mastering the STL is to write [code that is clear and concise][STL-beautiful].
 
 Iterators
 ---------
 Probably the most important and inescapable concept in the
 STL is the types we call iterators.
 
-Iterators are used to generalize the iterator over a STL container (or your own containers that implement iterators). 
+Iterators are used to generalize the iterator over an STL container (or your own containers that implement iterators).
 
 The easiest way to think about iterators is to think of them as fancy pointers (again, this conceptual model works for 80% of use cases - it's not entirely correct).
 
@@ -45,7 +43,7 @@ vector<int>::iterator vec_iterator = vec.begin();
 // go through the vector until we hit vec.end()
 while(vec_iterator != vec.end()) {
     cout << *vec_iterator << ' ';
-    vec_iterator++; //move the iterator up one 
+    vec_iterator++; //move the iterator up one
 }
 // Outputs "1 2 3 "
 ```
@@ -60,10 +58,10 @@ This is pictured below (image from en.cppreference.com)
 ![vector::begin and vector::end diagram][Vec-iterator-Image]
 
 
-A lot of algorithms in the STL, including `std::sort` 
+A lot of algorithms in the STL, including `std::sort`
 expect iterators as arguments. [(and usually specific types of iterators)][iterator-categories]
 
-One of the function prototypes for [`std::sort`][std-sort] looks 
+One of the function prototypes for [`std::sort`][std-sort] looks
 something like this:
 ```cpp
 template<typename RandomIt>
@@ -87,7 +85,7 @@ int main() {
         We can use auto to omit the type
         on the left-hand side in C++11!
 
-        Also, this is a way to iterate through a 
+        Also, this is a way to iterate through a
         vector using iterators with a for-loop!
     */
     for(auto vec_iter = vec.begin(); vec_iter != vec.end(); vec_iter++){
@@ -99,15 +97,15 @@ int main() {
 **Try it yourself - before compiling guess what the above program outputs.**
 
 
-That's cool and all, but what if we want to sort
-the container in desending order: function objects
-come to the rescue!
+That's cool and all, but what if we want to sort the
+container in descending order: function objects come
+to the rescue!
 
 Function Objects
 ----------------
-Back in CS12, you learned that you can **overload** 
+Back in CS12, you learned that you can **overload**
 special operators while defining classes. The prototype
-of a method of a rational number class which overloads the 
+of a method of a rational number class which overloads the
 `+` operator may look like this (assume the `gcd` function is defined):
 
 ```cpp
@@ -121,7 +119,7 @@ bool operator+(const Rational & other) {
 }
 ```
 You can also overload the function call operator by
-defining a function with the name `operator()`.
+defining a function with the function name `operator()`.
 
 e.g.
 ```cpp
@@ -152,13 +150,13 @@ int main() {
 
 
 Overloading the function call operator automatically makes the
-class a "function object". This becomes useful in a number of 
-STL algorithms. Some of the algorithms include [`std::sort`][std-sort]  
-and [`std::copy_if`][std-copy_if]. The most common types of 
+class a "function object". This becomes useful in a number of
+STL algorithms. Some of the algorithms include [`std::sort`][std-sort]
+and [`std::copy_if`][std-copy_if]. The most common types of
 function objects that these algorithms accept as input are
-[comparsion function objects][cpp-compare] which return
+[comparison function objects][cpp-compare] which return
 true if the first argument is *considered* less than the second and
-a unary predicate which returns true if it satisifies some condition.
+a unary predicate which returns true if it satisfies some condition.
 
 ```cpp
 #include <iostream>
@@ -203,13 +201,13 @@ int main() {
 Exercise 1
 ----------
 Implement your own STL-like reverse function, the reverse function
-will have the following prototype: 
+will have the following prototype:
 
 ```cpp
 template <typename BidirectionalIter>
 void my_reverse(BidirectionalIter first, BidirectionalIter last)
 ```
-The function should reverse a portion of a container given two Bidirectional iterators (iterators you can move forward and backwards).
+The function should reverse a portion of a container given two Bidirectional iterators (iterators you can move forward and backward).
 The elements within the range [first, last) are reversed.
 
 Exercise 2
@@ -233,7 +231,7 @@ come in handy!*
 
 Stretch-goal Exercise
 ---------------------
-Implement mergesort as an STL-like function. The mergesort function 
+Implement mergesort as an STL-like function. The mergesort function
 will have the following prototype:
 
 ```cpp
@@ -241,7 +239,7 @@ template <typename BidirectionalIter>
 void mergesort(BidirectionalIter first, BidirectionalIter last)
 ```
 Given two Bidirectional Iterators, sort the container's elements
-within the range [first, last). 
+within the range [first, last).
 
 *Ultra-hint: [`std::inplace_merge`][std-inplace_merge] and [`std::distance`][std-distance] are lifesavers here!*
 
