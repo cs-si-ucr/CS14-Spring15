@@ -55,6 +55,13 @@
         
 
     
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../notes">notes</a>
+            </li>
+        
+
+    
 </ul>
 
       </div>
@@ -85,19 +92,17 @@
           <div role="main">
             <div class="section">
               <h1 id="lab-2-the-standard-template-library">Lab 2: The Standard Template Library</h1>
-<p>Like templates, you've already been using a
-small portiton of the Standard Template Library already.</p>
-<p>Namely, you're already well-acquiented with the 
-contigous container <a href="http://en.cppreference.com/w/cpp/container/vector" title="cppreference for std::vector"><code>std::vector</code></a> and maybe even <a href="http://en.cppreference.com/w/cpp/container/list" title="cppreference for std::list"><code>std::list</code></a>.</p>
+<p>Like templates, you've already been using a small portion of the Standard Template Library already.</p>
+<p>Namely, you're already well-acquainted with the contiguous container <a href="http://en.cppreference.com/w/cpp/container/vector" title="cppreference for std::vector"><code>std::vector</code></a> and maybe even <a href="http://en.cppreference.com/w/cpp/container/list" title="cppreference for std::list"><code>std::list</code></a>.</p>
 <p>The Standard Template Library, or the <strong>STL</strong> for short, is
 a library that provides many reusable (or generic) algorithms and data structures that programmers would otherwise have to reimplement themselves.</p>
 <p>Some of these algorithms range from simple algorithms such
 as <a href="http://en.cppreference.com/w/cpp/algorithm/swap" title="cppreference for std::swap"><code>std::swap</code></a> to the more complex <a href="http://en.cppreference.com/w/cpp/algorithm/sort" title="cppreference for std::sort"><code>std::sort</code></a>.</p>
-<p>The motivation for learning and mastering the STL is to write <a href="http://www.bfilipek.com/2014/12/top-5-beautiful-c-std-algorithms.html" title="Cool examples that showcase use of the STL">code that is clear and concise</a>.  </p>
+<p>The motivation for learning and mastering the STL is to write <a href="http://www.bfilipek.com/2014/12/top-5-beautiful-c-std-algorithms.html" title="Cool examples that showcase use of the STL">code that is clear and concise</a>.</p>
 <h2 id="iterators">Iterators</h2>
 <p>Probably the most important and inescapable concept in the
 STL is the types we call iterators.</p>
-<p>Iterators are used to generalize the iterator over a STL container (or your own containers that implement iterators). </p>
+<p>Iterators are used to generalize the iterator over an STL container (or your own containers that implement iterators).</p>
 <p>The easiest way to think about iterators is to think of them as fancy pointers (again, this conceptual model works for 80% of use cases - it's not entirely correct).</p>
 <p><em>"Enough talk, show me the code!"</em> Here's how you can iterate through a vector using iterators!</p>
 <pre><code class="cpp">vector&lt;int&gt; vec {1, 2, 3};
@@ -106,7 +111,7 @@ vector&lt;int&gt;::iterator vec_iterator = vec.begin();
 // go through the vector until we hit vec.end()
 while(vec_iterator != vec.end()) {
     cout &lt;&lt; *vec_iterator &lt;&lt; ' ';
-    vec_iterator++; //move the iterator up one 
+    vec_iterator++; //move the iterator up one
 }
 // Outputs &quot;1 2 3 &quot;
 </code></pre>
@@ -118,9 +123,9 @@ iterator of type <code>vector&lt;int&gt;::iterator</code>.</p>
 <p><code>vec.begin()</code> returns an iterator to beginning of <code>vec</code>. However, <code>vec.end()</code> returns an iterator to the element <strong>one past</strong> the last element.</p>
 <p>This is pictured below (image from en.cppreference.com)
 <img alt="vector::begin and vector::end diagram" src="http://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg" /></p>
-<p>A lot of algorithms in the STL, including <code>std::sort</code> 
+<p>A lot of algorithms in the STL, including <code>std::sort</code>
 expect iterators as arguments. <a href="http://en.cppreference.com/w/cpp/iterator#Iterator_categories">(and usually specific types of iterators)</a></p>
-<p>One of the function prototypes for <a href="http://en.cppreference.com/w/cpp/algorithm/sort" title="cppreference for std::sort"><code>std::sort</code></a> looks 
+<p>One of the function prototypes for <a href="http://en.cppreference.com/w/cpp/algorithm/sort" title="cppreference for std::sort"><code>std::sort</code></a> looks
 something like this:</p>
 <pre><code class="cpp">template&lt;typename RandomIt&gt;
 void sort(Iterator first, Iterator last);
@@ -142,7 +147,7 @@ int main() {
         We can use auto to omit the type
         on the left-hand side in C++11!
 
-        Also, this is a way to iterate through a 
+        Also, this is a way to iterate through a
         vector using iterators with a for-loop!
     */
     for(auto vec_iter = vec.begin(); vec_iter != vec.end(); vec_iter++){
@@ -153,13 +158,13 @@ int main() {
 
 <p>`
 <strong>Try it yourself - before compiling guess what the above program outputs.</strong></p>
-<p>That's cool and all, but what if we want to sort
-the container in desending order: function objects
-come to the rescue!</p>
+<p>That's cool and all, but what if we want to sort the
+container in descending order: function objects come
+to the rescue!</p>
 <h2 id="function-objects">Function Objects</h2>
-<p>Back in CS12, you learned that you can <strong>overload</strong> 
+<p>Back in CS12, you learned that you can <strong>overload</strong>
 special operators while defining classes. The prototype
-of a method of a rational number class which overloads the 
+of a method of a rational number class which overloads the
 <code>+</code> operator may look like this (assume the <code>gcd</code> function is defined):</p>
 <pre><code class="cpp">bool operator+(const Rational &amp; other) {
     int new_denom = gcd(this -&gt; denom, other.denom);
@@ -172,7 +177,7 @@ of a method of a rational number class which overloads the
 </code></pre>
 
 <p>You can also overload the function call operator by
-defining a function with the name <code>operator()</code>.</p>
+defining a function with the function name <code>operator()</code>.</p>
 <p>e.g.</p>
 <pre><code class="cpp">#include &lt;iostream&gt;
 using namespace std;
@@ -200,13 +205,13 @@ int main() {
 
 <p><strong>Try it yourself - before compiling guess what the above program outputs.</strong></p>
 <p>Overloading the function call operator automatically makes the
-class a "function object". This becomes useful in a number of 
-STL algorithms. Some of the algorithms include <a href="http://en.cppreference.com/w/cpp/algorithm/sort" title="cppreference for std::sort"><code>std::sort</code></a><br />
-and <a href="http://en.cppreference.com/w/cpp/algorithm/copy" title="cppreference for std::copy_if"><code>std::copy_if</code></a>. The most common types of 
+class a "function object". This becomes useful in a number of
+STL algorithms. Some of the algorithms include <a href="http://en.cppreference.com/w/cpp/algorithm/sort" title="cppreference for std::sort"><code>std::sort</code></a>
+and <a href="http://en.cppreference.com/w/cpp/algorithm/copy" title="cppreference for std::copy_if"><code>std::copy_if</code></a>. The most common types of
 function objects that these algorithms accept as input are
-<a href="http://en.cppreference.com/w/cpp/concept/Compare" title="cppreference for the C++ concept of an object of type Compare">comparsion function objects</a> which return
+<a href="http://en.cppreference.com/w/cpp/concept/Compare" title="cppreference for the C++ concept of an object of type Compare">comparison function objects</a> which return
 true if the first argument is <em>considered</em> less than the second and
-a unary predicate which returns true if it satisifies some condition.</p>
+a unary predicate which returns true if it satisfies some condition.</p>
 <pre><code class="cpp">#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 #include &lt;vector&gt;
@@ -248,12 +253,12 @@ int main() {
 <p><strong>Try it yourself - before compiling guess what the above program outputs.</strong></p>
 <h2 id="exercise-1">Exercise 1</h2>
 <p>Implement your own STL-like reverse function, the reverse function
-will have the following prototype: </p>
+will have the following prototype:</p>
 <pre><code class="cpp">template &lt;typename BidirectionalIter&gt;
 void my_reverse(BidirectionalIter first, BidirectionalIter last)
 </code></pre>
 
-<p>The function should reverse a portion of a container given two Bidirectional iterators (iterators you can move forward and backwards).
+<p>The function should reverse a portion of a container given two Bidirectional iterators (iterators you can move forward and backward).
 The elements within the range [first, last) are reversed.</p>
 <h2 id="exercise-2">Exercise 2</h2>
 <p>Implement rotate as an STL-like function. The rotate function
@@ -270,14 +275,14 @@ in the container. The new order should be [n_first, ..., last,  first, ... n_fir
 <p><em>Super Hint: The reverse function you just implement should really
 come in handy!</em></p>
 <h2 id="stretch-goal-exercise">Stretch-goal Exercise</h2>
-<p>Implement mergesort as an STL-like function. The mergesort function 
+<p>Implement mergesort as an STL-like function. The mergesort function
 will have the following prototype:</p>
 <pre><code class="cpp">template &lt;typename BidirectionalIter&gt;
 void mergesort(BidirectionalIter first, BidirectionalIter last)
 </code></pre>
 
 <p>Given two Bidirectional Iterators, sort the container's elements
-within the range [first, last). </p>
+within the range [first, last).</p>
 <p><em>Ultra-hint: <a href="http://en.cppreference.com/w/cpp/algorithm/inplace_merge" title="cppreference for std::inplace_merge"><code>std::inplace_merge</code></a> and <a href="http://en.cppreference.com/w/cpp/iterator/distance" title="cppreference for std::distance"><code>std::distance</code></a> are lifesavers here!</em></p>
 <h2 id="cool-references">Cool References</h2>
 <p><a href="https://channel9.msdn.com/Series/C9-Lectures-Stephan-T-Lavavej-Standard-Template-Library-STL-/C9-Lectures-Introduction-to-STL-with-Stephan-T-Lavavej" title="Lecture that introduces STL">Standard Template Library Video Series by Stephan T. Lavaej at Microsoft</a></p>
@@ -287,6 +292,8 @@ within the range [first, last). </p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../notes" class="btn btn-neutral float-right" title="notes"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../lab_week_01" class="btn btn-neutral" title="Lab Week 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -316,7 +323,7 @@ within the range [first, last). </p>
     <span class="rst-current-version" data-toggle="rst-current-version">
         
       <span><a href="../lab_week_01" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      <span style="margin-left: 15px"><a href="" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span style="margin-left: 15px"><a href="../notes" style="color: #fcfcfc">Next &raquo;</a></span>
     </span>
 </div>
 </body>
