@@ -170,14 +170,14 @@ using namespace std;
 class SortGreater {
     public:
         bool operator() (const int & a, const int & b ) const {
-            return a > y;
+            return a > b;
         }
 };
 
 class IsEven {
     public:
         bool operator() (const int & x) const {
-            return x % 2;
+            return x % 2 == 0;
         }
 };
 
@@ -189,6 +189,7 @@ int main() {
     for (int elem : from_vector) {
         cout << elem << ' ';
     }
+    cout << endl;
 
     copy_if(from_vector.begin(), from_vector.end(), to_list.begin(), IsEven());
 
