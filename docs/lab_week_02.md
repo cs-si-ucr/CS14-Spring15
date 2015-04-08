@@ -90,7 +90,7 @@ int main() {
         Also, this is a way to iterate through a 
         vector using iterators with a for-loop!
     */
-    for(auto vec_iter = vec.begin(), vec_iter != vec.end(); vec_iter++){
+    for(auto vec_iter = vec.begin(); vec_iter != vec.end(); vec_iter++){
         cout << *vec_iter << ' ';
     }
 }
