@@ -145,7 +145,7 @@ int main() {
         Also, this is a way to iterate through a 
         vector using iterators with a for-loop!
     */
-    for(auto vec_iter = vec.begin(), vec_iter != vec.end(); vec_iter++){
+    for(auto vec_iter = vec.begin(); vec_iter != vec.end(); vec_iter++){
         cout &lt;&lt; *vec_iter &lt;&lt; ' ';
     }
 }
@@ -179,8 +179,8 @@ using namespace std;
 
 class Counter {
     public:
-        Counter() :x(0) {}
-        Counter(int x) : x(x) {}
+        Counter() :count(0) {}
+        Counter(int x) : count(count) {}
         void operator() () {
             ++count;
         }
@@ -191,7 +191,7 @@ class Counter {
         int count;
 };
 int main() {
-    Counter count();
+    Counter count;
     count();
     count();
     cout &lt;&lt; count.get_count() &lt;&lt; endl;
@@ -216,14 +216,14 @@ using namespace std;
 class SortGreater {
     public:
         bool operator() (const int &amp; a, const int &amp; b ) const {
-            return a &gt; y;
+            return a &gt; b;
         }
 };
 
 class IsEven {
     public:
         bool operator() (const int &amp; x) const {
-            return x % 2;
+            return x % 2 == 0;
         }
 };
 
@@ -235,6 +235,7 @@ int main() {
     for (int elem : from_vector) {
         cout &lt;&lt; elem &lt;&lt; ' ';
     }
+    cout &lt;&lt; endl;
 
     copy_if(from_vector.begin(), from_vector.end(), to_list.begin(), IsEven());
 
