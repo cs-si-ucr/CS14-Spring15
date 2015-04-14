@@ -97,6 +97,7 @@ class myQueue {
     T front() const;    // gets the element at the front of the queue
     bool pop();         // returns false if failed
     bool empty() const; // returned true if empty
+};
 ```
 
 **Important**: Use a ``deque``, ``list``, or ``vector`` to do all of the heavy lifting for you.
