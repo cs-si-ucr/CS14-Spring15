@@ -1,4 +1,4 @@
-Lab 2: Stacks and Queues
+Lab 3: Stacks and Queues
 ===================================
 Stacks
 ------
