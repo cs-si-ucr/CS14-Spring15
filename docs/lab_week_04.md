@@ -1,4 +1,4 @@
-Lab 3: Binary Search Trees (BST)
+Lab 4: Binary Search Trees (BST)
 ================
 
 What's a tree?
