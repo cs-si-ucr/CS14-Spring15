@@ -14,7 +14,7 @@ Thus, to define a tree recursively, we can say that:
 
 When we put all of these things together, we end up with something looking like:
 
-![tree](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/220px-Binary_tree.svg.png =250x "It's a tree!")
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/220px-Binary_tree.svg.png" alt="It's a Tree!" style="width: 250px;"/>
 
 
 What's a BST?
@@ -26,6 +26,6 @@ You'll notice that the picture above is **NOT** a BST. Even though each node has
 
 **This** would be a valid Binary Search Tree:
 
-![BST](http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/2000px-Binary_search_tree.svg.png =250x "It's a BST!")
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/2000px-Binary_search_tree.svg.png" alt="It's a BST!" style="width: 250px;"/>
 
 Notice how **every** number to the left of any node (take 8 for example), is less than the node itself. Since this is the case, where will the smallest node be? What about the largest?
