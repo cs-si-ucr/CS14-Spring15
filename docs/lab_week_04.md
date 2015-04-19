@@ -1,6 +1,5 @@
 Lab 3: Binary Search Trees (BST)
 ================
-[tree-image-1]:http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/220px-Binary_tree.svg.png
 
 What's a tree?
 --------------
@@ -14,8 +13,19 @@ Thus, to define a tree recursively, we can say that:
 4. A Node can have any number of children (including 0)
 
 When we put all of these things together, we end up with something looking like:
-![tree](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/220px-Binary_tree.svg.png "It's a tree!")
+
+![tree](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/220px-Binary_tree.svg.png =250x "It's a tree!")
 
 
-What makes BST different from other trees?
-------------------------------------------
+What's a BST?
+-------------
+A Binary Search Tree is exactly like any other tree, except every node has **exactly** two children (if there is no child, the node will be a null pointer).
+Furtermore (and more importantly), every child to the left of a node will be less than the node, while every child to the right will be greater.
+
+You'll notice that the picture above is **NOT** a BST. Even though each node has two children (we can pretend that there are invisible null children), if we go to the left child of our root, we find a value that is *greater*, breaking our definition.
+
+**This** would be a valid Binary Search Tree:
+
+![BST](http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/2000px-Binary_search_tree.svg.png =250x "It's a BST!")
+
+Notice how **every** number to the left of any node (take 8 for example), is less than the node itself. Since this is the case, where will the smallest node be? What about the largest?
