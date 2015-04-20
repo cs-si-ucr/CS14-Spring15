@@ -7,8 +7,9 @@ Trees are often easier to deal with recursively (or if you're a mathematician, '
 Thus, to define a tree recursively, we can say that:
 
 1. A Tree is a system of nodes
-..* A node contains a value and pointers to its children
-2. Every node has a unique parent (no node has more than one parent)
+	* A node consists of a value and pointers to its children
+2. Every node has a unique parent
+	* No node has more than one parent
 3. The **Root** of a tree has no parent
 4. A Node can have any number of children (including 0)
 
@@ -16,6 +17,7 @@ When we put all of these things together, we end up with something looking like:
 
 <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/220px-Binary_tree.svg.png" alt="It's a Tree!" style="width: 250px;"/>
 
+Where the numbers in the nodes represent the value at that node, and the arrows represent pointers to children nodes.
 
 What's a BST?
 -------------
@@ -28,7 +30,7 @@ You'll notice that the picture above is **NOT** a BST. Even though each node has
 
 <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/2000px-Binary_search_tree.svg.png" alt="It's a BST!" style="width: 250px;"/>
 
-Notice how **every** number to the left of any node (take 8 for example), is less than the node itself. Since this is the case, where will the smallest node be? What about the largest?
+Notice how **every** number to the left of any node (take 8 for example), is less than the node itself (1, 3, 4, 5, 7). Since this is the case, where will the smallest node be? What about the largest?
 
 Put it into practice!
 ---------------------
@@ -62,4 +64,4 @@ Since we are using heap memory like a linked list, we need a **Copy Constructor*
 
 Your stretch goal will be to make the Copy-ctor and Assignment-op, but for Exercise 5, implement a Destructor for the Tree class.
 
-*(What order will you 'visit' the nodes to delete them?)*
+*(What order will you visit the nodes to delete them?)*
