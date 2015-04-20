@@ -53,3 +53,13 @@ Exercise 4
 Add `print_ascending` and `print_descending` functions to the `Tree` class that will print all of the values in the tree in ascending and descending order on one line seperated by spaces.
 
 *(Notice how it didn't matter what order you 'visited' the nodes to find the total. Make sure you have your order correct here!)*
+
+Exercise 5
+----------
+You may notice that 3 very important functions are still missing from our tree. Can you guess what they are? (**hint:** *what is the rule of 3?*)
+
+Since we are using heap memory like a linked list, we need a **Copy Constructor**, **Overloaded Assignment Operator** and **Destructor**!
+
+Your stretch goal will be to make the Copy-ctor and Assignment-op, but for Exercise 5, implement a Destructor for the Tree class.
+
+*(What order will you 'visit' the nodes to delete them?)*
