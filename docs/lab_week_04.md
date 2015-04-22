@@ -36,6 +36,10 @@ Put it into practice!
 ---------------------
 We have created a [simple implementation of a BST](https://gist.github.com/scohe001/65ae445a6577cb85b22c) for you to use. The class comes with the member functions `void push(T val)` to add values to the tree, and `void print()` to print a rough representation of the tree.
 
+
+######NOTE:
+*It is often almost always easier to write Tree functions recursively (as you'll see the push function has been written). However, it **is** possible to do all of the following exercises without recursion--you'll just need to be iterating over a stack you're constantly pushing and popping to (as you'll see the print function is doing).*
+
 Exercise 1
 ----------
 Add `min` and `max` funcitons to the `Tree` class to return the minimum and maxiumum values stored.
