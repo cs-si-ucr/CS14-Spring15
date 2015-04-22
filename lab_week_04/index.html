@@ -160,6 +160,8 @@ Furtermore (and more importantly), every child to the left of a node will be les
 <p>Notice how <strong>every</strong> number to the left of any node (take 8 for example), is less than the node itself (1, 3, 4, 5, 7). Since this is the case, where will the smallest node be? What about the largest?</p>
 <h2 id="put-it-into-practice">Put it into practice!</h2>
 <p>We have created a <a href="https://gist.github.com/scohe001/65ae445a6577cb85b22c">simple implementation of a BST</a> for you to use. The class comes with the member functions <code>void push(T val)</code> to add values to the tree, and <code>void print()</code> to print a rough representation of the tree.</p>
+<h6 id="note">NOTE:</h6>
+<p><em>It is often almost always easier to write Tree functions recursively (as you'll see the push function has been written). However, it <strong>is</strong> possible to do all of the following exercises without recursion--you'll just need to be iterating over a stack you're constantly pushing and popping to (as you'll see the print function is doing).</em></p>
 <h2 id="exercise-1">Exercise 1</h2>
 <p>Add <code>min</code> and <code>max</code> funcitons to the <code>Tree</code> class to return the minimum and maxiumum values stored.</p>
 <p><em>(If there are no values in the tree, return the class default, <code>T()</code>)</em></p>
@@ -215,7 +217,7 @@ Furtermore (and more importantly), every child to the left of a node will be les
 
 <!--
 MkDocs version  : 0.12.1
-Docs Build Date : 2015-04-22 04:55:09.780418
+Docs Build Date : 2015-04-22 06:33:59.088032
 -->
 </body>
 </html>
