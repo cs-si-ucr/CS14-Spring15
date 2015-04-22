@@ -34,7 +34,7 @@ Notice how **every** number to the left of any node (take 8 for example), is les
 
 Put it into practice!
 ---------------------
-We have created a simple implementation of a BST for you to use. The class comes with the member functions `void push(T val)` to add values to the tree, and `void print()` to print a rough representation of the tree.
+We have created a [simple implementation of a BST](https://gist.github.com/scohe001/65ae445a6577cb85b22c) for you to use. The class comes with the member functions `void push(T val)` to add values to the tree, and `void print()` to print a rough representation of the tree.
 
 Exercise 1
 ----------
