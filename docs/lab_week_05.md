@@ -33,9 +33,41 @@ int main() {
 }
 ```
 
-The above problem should print out 
+The above program should print out 
 ```text
 apple is not an anagram of one of the words in the checker
 olleh is an anagram of one of the words in the checker
 
 ```
+Requirements, the data structure must meet the following
+space and time complexity requirements:
+
+Where `n` is the number of strings stored by the data structure.
+```text
+Data Structure: O(n) space
+
+Operations:
+    add(string)
+        Time: O(log n)
+    
+    check(string)
+        Time: O(log n)
+```
+
+Extra Bits: Exercise 1
+----------------------
+Improve Exercise 1 so that the data structure guarantees
+the following time complexities: 
+
+```text
+Data Structure: O(n) space
+
+Operations:
+    add(string)
+        Time: O(1) amortized
+    
+    check(string)
+        Time: O(1) amortized
+```
+
+
