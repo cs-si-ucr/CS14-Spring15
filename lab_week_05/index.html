@@ -107,6 +107,25 @@
             <div class="section">
               <h1 id="lab-week-5-sets-and-maps">Lab Week 5: Sets and Maps</h1>
 <h2 id="exercise-1">Exercise 1</h2>
+<p>Write a function called <code>freq_map</code> which takes in a vector
+of strings and returns a stringfrequency map, a map which
+maps strings to the number of times it appears in the
+vector.</p>
+<p>Use the following function prototype:</p>
+<pre><code class="cpp">std::map&lt;std::string, unsigned int&gt; freq_map(std::vector&lt;std::string&gt; words) 
+</code></pre>
+
+<p>Use the following text file to test your function, read the words
+from the file and put them into a super big vector!
+<a href="http://termbin.com/1x6w">http://termbin.com/1x6w</a></p>
+<h2 id="exercise-2">Exercise 2</h2>
+<p>Write a function that returns a vector of the top <code>n</code> most frequent strings in the frequency map.</p>
+<p>Use the following header!</p>
+<pre><code class="cpp">std::vector&lt;std::string&gt; 
+top_n(std::map&lt;std::string, unsigned int&gt; freq_map, unsigned int n = 5)
+</code></pre>
+
+<h2 id="stretch-goal-exercise-1">Stretch-Goal Exercise 1</h2>
 <p>Write a class called <code>AnagramChecker</code> which 
 keeps track of strings and is able to tell
 if any other string is an anagram in in its
@@ -154,8 +173,8 @@ Operations:
         Time: O(log n)
 </code></pre>
 
-<h2 id="extra-bits-exercise-1">Extra Bits: Exercise 1</h2>
-<p>Improve Exercise 1 so that the data structure guarantees
+<h2 id="extra-bits-stretch-goal-exercise-1">Extra Bits: Stretch-Goal Exercise 1</h2>
+<p>Improve SG Exercise 1 so that the data structure guarantees
 the following time complexities: </p>
 <pre><code class="text">Data Structure: O(n) space
 
