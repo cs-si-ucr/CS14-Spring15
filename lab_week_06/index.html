@@ -182,6 +182,21 @@ naive hash function:</p>
 }
 </code></pre>
 
+<p>Use the following print method to test your class! (assumes <code>_buckets</code> is the
+name of the array of buckets)</p>
+<pre><code class="cpp">void print() {
+    for(const auto &amp; bucket: _buckets) {
+        if(!bucket.empty()) {
+            // print contents of bucket
+            for (const auto &amp; elem: bucket) {
+                std::cout &lt;&lt; elem &lt;&lt; ' ';
+            }
+            std::cout &lt;&lt; std::endl;
+        }
+     }
+}
+</code></pre>
+
 <h2 id="stretch-goal-exercise">Stretch-Goal Exercise</h2>
 <p>Extend your <code>UnorderedSet</code> class to a <code>UnorderedMap</code> class! Use the same collision resolution method.</p>
 <p>Implement the following class methods:</p>
@@ -229,7 +244,7 @@ void remove(const Key &amp; k)
 
 <!--
 MkDocs version  : 0.12.2
-Docs Build Date : 2015-05-06 06:44:49.979341
+Docs Build Date : 2015-05-06 06:51:01.682449
 -->
 </body>
 </html>
