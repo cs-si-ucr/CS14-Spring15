@@ -57,6 +57,22 @@ unsigned int str_hash(std::string s){
 }
 ```
 
+Use the following print method to test your class! (assumes `_buckets` is the
+name of the array of buckets)
+```cpp
+void print() {
+    for(const auto & bucket: _buckets) {
+        if(!bucket.empty()) {
+            // print contents of bucket
+            for (const auto & elem: bucket) {
+                std::cout << elem << ' ';
+            }
+            std::cout << std::endl;
+        }
+     }
+}
+```
+
 Stretch-Goal Exercise 
 ----------
 Extend your `UnorderedSet` class to a `UnorderedMap` class! Use the same collision resolution method.
