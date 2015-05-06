@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lab Week 5 - CS14 SI Labs: Spring 2015</title>
+  <title>Lab Week 6 - CS14 SI Labs: Spring 2015</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -80,31 +80,29 @@
 
     
         
-            <li class="toctree-l1 current">
-                <a class="current" href="./">Lab Week 5</a>
-                
-                    <ul>
-                    
-                        <li class="toctree-l3"><a href="#lab-week-5-sets-and-maps">Lab Week 5: Sets and Maps</a></li>
-                        
-                            <li><a class="toctree-l4" href="#exercise-1">Exercise 1</a></li>
-                        
-                            <li><a class="toctree-l4" href="#exercise-2">Exercise 2</a></li>
-                        
-                            <li><a class="toctree-l4" href="#stretch-goal-exercise-1">Stretch-Goal Exercise 1</a></li>
-                        
-                            <li><a class="toctree-l4" href="#extra-bits-stretch-goal-exercise-1">Extra Bits: Stretch-Goal Exercise 1</a></li>
-                        
-                    
-                    </ul>
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_05/">Lab Week 5</a>
                 
             </li>
         
 
     
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_06/">Lab Week 6</a>
+            <li class="toctree-l1 current">
+                <a class="current" href="./">Lab Week 6</a>
+                
+                    <ul>
+                    
+                        <li class="toctree-l3"><a href="#lab-week-6-hash-tables">Lab Week 6: Hash Tables</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-1">Exercise 1</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-2">Exercise 2</a></li>
+                        
+                            <li><a class="toctree-l4" href="#stretch-goal-exercise">Stretch-Goal Exercise</a></li>
+                        
+                    
+                    </ul>
                 
             </li>
         
@@ -131,7 +129,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="..">Docs</a> &raquo;</li>
     
-    <li>Lab Week 5</li>
+    <li>Lab Week 6</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -140,85 +138,56 @@
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="lab-week-5-sets-and-maps">Lab Week 5: Sets and Maps</h1>
+              <h1 id="lab-week-6-hash-tables">Lab Week 6: Hash Tables</h1>
 <h2 id="exercise-1">Exercise 1</h2>
-<p>Write a function called <code>freq_map</code> which takes in a vector
-of strings and returns a stringfrequency map, a map which
-maps strings to the number of times it appears in the
-vector.</p>
-<p>Use the following function prototype:</p>
-<pre><code class="cpp">std::map&lt;std::string, unsigned int&gt; freq_map(std::vector&lt;std::string&gt; words) 
+<p>(Kinda) heap sort! Use <code>std::priority_queue</code> to
+sort a vector in ascending order. <code>std::greater</code>
+may prove useful. </p>
+<p>Hint2: Check out the Example at [cppreference Queue] - the top, pop and push operations can make this possible!(http://en.cppreference.com/w/cpp/container/priority_queue)</p>
+<pre><code class="cpp">void pq_sort(std::vector&lt;int&gt; &amp; v)
 </code></pre>
 
-<p>Use the following text file to test your function, read the words
-from the file and put them into a super big vector!
-<a href="http://termbin.com/1x6w">http://termbin.com/1x6w</a></p>
 <h2 id="exercise-2">Exercise 2</h2>
-<p>Write a function that returns a vector of the top <code>n</code> most frequent strings in the frequency map.</p>
-<p>Use the following header!</p>
-<pre><code class="cpp">std::vector&lt;std::string&gt; 
-top_n(std::map&lt;std::string, unsigned int&gt; freq_map, unsigned int n = 5)
+<p>Write a class called <code>UnorderedSet</code> with the following
+public methods:</p>
+<p>Note: first we will test with <code>std::string</code> instead
+of <code>T</code>. So in your code we should we should 
+declare the following typedef: <code>typedef std::string T</code>.</p>
+<pre><code class="cpp">int count(const T &amp; elem)
+void remove(const T &amp; elem) 
+void insert(const T &amp; elem)
 </code></pre>
 
-<h2 id="stretch-goal-exercise-1">Stretch-Goal Exercise 1</h2>
-<p>Write a class called <code>AnagramChecker</code> which 
-keeps track of strings and is able to tell
-if any other string is an anagram in in its
-data structure.</p>
-<p>Usage example:</p>
-<pre><code class="cpp">#include &quot;anagramchecker.h&quot;
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
-
-void printIfAnagram(const AnagramChecker &amp; a, string s) {
-    if(a.check(s)) {
-        cout &lt;&lt; s &lt;&lt; &quot; is an anagram of one of the words in the checker&quot; &lt;&lt; endl;
-    } else {
-        cout &lt;&lt; s &lt;&lt; &quot; is not an anagram of one of the words in the checker&quot; &lt;&lt; endl;
+<p>Your implementation of UnorderedSet uses a 
+hash table with 6159 buckets (<a href="http://www.orcca.on.ca/~yxie/courses/cs2210b-2011/htmls/extra/PlanetMath_%20goodhashtable.pdf">somewhat 
+arbitrary prime</a>). For this exercise you will handle collisions 
+using the seperate chaining method, where each
+the hash function mod the table size gives you a bucket
+and each bucket is a <code>std::list</code> of keys.</p>
+<p>For testing purposes, we will use the following
+naive hash function:</p>
+<pre><code class="cpp">unsigned int str_hash(std::string s){
+    /*
+     * This hash simply adds up
+     * the ascii values of each character in
+     * the string.
+    */
+    unsigned int hash_val = 0;
+    unsigned int ascii_val = 0;
+    for (char c : s) {
+        ascii_val = static_cast&lt;unsigned int&gt;(c);
+        hash_val += ascii_val;
     }
-}
-
-int main() {
-    AnagramChecker a;
-    a.add(&quot;hello&quot;);
-    a.add(&quot;bye&quot;);
-
-    printIfAnagram(a, &quot;apple&quot;);
-    printIfAnagram(a, &quot;olleh&quot;);
+    return hash_val;
 }
 </code></pre>
 
-<p>The above program should print out </p>
-<pre><code class="text">apple is not an anagram of one of the words in the checker
-olleh is an anagram of one of the words in the checker
-
-</code></pre>
-
-<p>Requirements, the data structure must meet the following
-space and time complexity requirements:</p>
-<p>Where <code>n</code> is the number of strings stored by the data structure.</p>
-<pre><code class="text">Data Structure: O(n) space
-
-Operations:
-    add(string)
-        Time: O(log n)
-
-    check(string)
-        Time: O(log n)
-</code></pre>
-
-<h2 id="extra-bits-stretch-goal-exercise-1">Extra Bits: Stretch-Goal Exercise 1</h2>
-<p>Improve SG Exercise 1 so that the data structure guarantees
-the following time complexities: </p>
-<pre><code class="text">Data Structure: O(n) space
-
-Operations:
-    add(string)
-        Time: O(1) amortized
-
-    check(string)
-        Time: O(1) amortized
+<h2 id="stretch-goal-exercise">Stretch-Goal Exercise</h2>
+<p>Extend your <code>UnorderedSet</code> class to a <code>UnorderedMap</code> class! Use the same collision resolution method.</p>
+<p>Implement the following class methods:</p>
+<pre><code class="cpp">int count (const Key &amp; k)
+Value &amp; operator[](const Key * k) 
+void remove(const Key &amp; k)
 </code></pre>
             </div>
           </div>
@@ -226,10 +195,8 @@ Operations:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../lab_week_06/" class="btn btn-neutral float-right" title="Lab Week 6"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../lab_week_04/" class="btn btn-neutral" title="Lab Week 4"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../lab_week_05/" class="btn btn-neutral" title="Lab Week 5"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -255,14 +222,14 @@ Operations:
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
         
-      <span><a href="../lab_week_04/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      <span style="margin-left: 15px"><a href="../lab_week_06/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../lab_week_05/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="" style="color: #fcfcfc">Next &raquo;</a></span>
     </span>
 </div>
 
 <!--
 MkDocs version  : 0.12.2
-Docs Build Date : 2015-05-06 06:44:49.972756
+Docs Build Date : 2015-05-06 06:44:49.979341
 -->
 </body>
 </html>
