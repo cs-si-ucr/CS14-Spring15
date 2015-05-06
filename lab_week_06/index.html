@@ -185,16 +185,26 @@ naive hash function:</p>
 <p>Use the following print method to test your class! (assumes <code>_buckets</code> is the
 name of the array of buckets)</p>
 <pre><code class="cpp">void print() {
-    for(const auto &amp; bucket: _buckets) {
+   unsigned int used_buckets = 0;
+   unsigned int num_elems = 0;
+   for(unsigned int i = 0; i &lt; NUM_BUCKETS; ++i) {
+        const auto &amp; bucket = _buckets[i];
         if(!bucket.empty()) {
-            // print contents of bucket
-            for (const auto &amp; elem: bucket) {
-                std::cout &lt;&lt; elem &lt;&lt; ' ';
+            ++used_buckets;
+            std::cout &lt;&lt; &quot;bucket #&quot; &lt;&lt;  i &lt;&lt; ':';
+            for(const auto &amp; elem: bucket) {
+                std::cout &lt;&lt; elem &lt;&lt; ',';
+                ++num_elems;
             }
-            std::cout &lt;&lt; std::endl;
+            std::cout &lt;&lt; std::endl &lt;&lt; std::endl;
         }
-     }
+   }
+   std::cout &lt;&lt; &quot;Number of buckets used: &quot; &lt;&lt; used_buckets
+       &lt;&lt; '/'  &lt;&lt; NUM_BUCKETS  &lt;&lt; std::endl;
+   std::cout &lt;&lt; &quot;Number of total elements: &quot; &lt;&lt; num_elems &lt;&lt; std::endl;
 }
+
+
 </code></pre>
 
 <h2 id="stretch-goal-exercise">Stretch-Goal Exercise</h2>
@@ -244,7 +254,7 @@ void remove(const Key &amp; k)
 
 <!--
 MkDocs version  : 0.12.2
-Docs Build Date : 2015-05-06 06:51:01.682449
+Docs Build Date : 2015-05-06 16:30:26.390182
 -->
 </body>
 </html>
