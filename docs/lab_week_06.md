@@ -61,16 +61,26 @@ Use the following print method to test your class! (assumes `_buckets` is the
 name of the array of buckets)
 ```cpp
 void print() {
-    for(const auto & bucket: _buckets) {
+   unsigned int used_buckets = 0;
+   unsigned int num_elems = 0;
+   for(unsigned int i = 0; i < NUM_BUCKETS; ++i) {
+        const auto & bucket = _buckets[i];
         if(!bucket.empty()) {
-            // print contents of bucket
-            for (const auto & elem: bucket) {
-                std::cout << elem << ' ';
+            ++used_buckets;
+            std::cout << "bucket #" <<  i << ':';
+            for(const auto & elem: bucket) {
+                std::cout << elem << ',';
+                ++num_elems;
             }
-            std::cout << std::endl;
+            std::cout << std::endl << std::endl;
         }
-     }
+   }
+   std::cout << "Number of buckets used: " << used_buckets
+       << '/'  << NUM_BUCKETS  << std::endl;
+   std::cout << "Number of total elements: " << num_elems << std::endl;
 }
+
+
 ```
 
 Stretch-Goal Exercise 
