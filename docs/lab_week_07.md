@@ -24,9 +24,7 @@ This takes logarithmic time.
 
 Use <a href="https://www.cs.usfca.edu/~galles/visualization/Heap.html" target="_blank">this visualization</a> of a MinHeap to help you with the exercise below.
 
-Exercise 1
-----------
-Implement a MinHeap using the class prototype below:
+Note: use the following class prototype:
 
 ```c++
 #include <vector>
@@ -46,6 +44,7 @@ class MinHeap {
         Less _less;
 };
 ```
+
 <!--
 ```c++
         void _sift_up(int idx);
@@ -57,4 +56,31 @@ class MinHeap {
         int _get_parent(int child_idx);
 ```
 -->
+
+Exercise 1
+----------
+``empty`` returns ``true`` or ``false`` depending on whether or not there are items in the ``heap``
+
+Implement ``empty``.
+Comment out the other unimplemented functions to make sure you copied everything over correctly.
+Run a simple test to make sure it works.
+
+
+Exercise 2
+----------
+``push`` adds elements to the ``heap``.
+``top`` gets the top element of the ``heap``.
+``heapify`` takes a vector of elements and adds them to the heap.
+
+Implement ``push``, ``top``, and ``heapify``.
+See [this gist](https://gist.github.com/CrazyWearsPJs/4c7ad50a5cd973e2e9c2) for some test test harnesses.
+Feel free to write your own as well.
+Comment out the tests that use ``pop``.
+
+Exercise 3
+----------
+``pop`` removes the top element of the ``heap``.
+
+Implement ``pop`` and run all the tests on your code.
+
 
