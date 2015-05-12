@@ -3,7 +3,7 @@ Lab Week 7: Binary Heaps
 
 Binary Heaps are binary trees similar to BSTs, but have different properties.
 The two types of Binary Heaps you need to know about are MinHeaps and MaxHeaps.
-In a MinHeap, the only rule (besides adhering to tree rules) is that children have a smaller value than their parent.
+In a MinHeap, the only rule (besides adhering to tree rules) is that children have a larger value than their parent.
 Similarly, MaxHeaps maintain that all children are less than their parent.
 
 When inserting nodes into a Binary Heap, start by filling in values at the bottom of the tree from left to right.
@@ -22,9 +22,9 @@ If the smallest of those is smaller than the new root, swap with the root.
 Repeat this process on the swapped branch through to the bottom of the tree.
 This takes logarithmic time.
 
-Use <a href="https://www.cs.usfca.edu/~galles/visualization/Heap.html" target="_blank">this visualization</a> of a MinHeap to help you with the exercise below.
+Use <u><a href="https://www.cs.usfca.edu/~galles/visualization/Heap.html" target="_blank">this visualization</a></u> of a MinHeap to help you with the exercise below.
 
-Note: use the following class prototype:
+**Note**: use the following class prototype:
 
 ```c++
 #include <vector>
@@ -73,7 +73,7 @@ Exercise 2
 ``heapify`` takes a vector of elements and adds them to the heap.
 
 Implement ``push``, ``top``, and ``heapify``.
-See [this gist](https://gist.github.com/CrazyWearsPJs/4c7ad50a5cd973e2e9c2) for some test test harnesses.
+See <u><a href="https://gist.github.com/CrazyWearsPJs/4c7ad50a5cd973e2e9c2" target="_blank">this gist</a></u> for some test test harnesses.
 Feel free to write your own as well.
 Comment out the tests that use ``pop``.
 
