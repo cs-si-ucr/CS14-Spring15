@@ -105,6 +105,10 @@
                         
                             <li><a class="toctree-l4" href="#exercise-1">Exercise 1</a></li>
                         
+                            <li><a class="toctree-l4" href="#exercise-2">Exercise 2</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-3">Exercise 3</a></li>
+                        
                     
                     </ul>
                 
@@ -161,8 +165,7 @@ If the smallest of those is smaller than the new root, swap with the root.
 Repeat this process on the swapped branch through to the bottom of the tree.
 This takes logarithmic time.</p>
 <p>Use <a href="https://www.cs.usfca.edu/~galles/visualization/Heap.html" target="_blank">this visualization</a> of a MinHeap to help you with the exercise below.</p>
-<h2 id="exercise-1">Exercise 1</h2>
-<p>Implement a MinHeap using the class prototype below:</p>
+<p>Note: use the following class prototype:</p>
 <pre><code class="c++">#include &lt;vector&gt;
 #include &lt;algorithm&gt;
 #include &lt;functional&gt;
@@ -186,6 +189,23 @@ class MinHeap {
 wzxhzdk:1
 
 -->
+
+<h2 id="exercise-1">Exercise 1</h2>
+<p><code>empty</code> returns <code>true</code> or <code>false</code> depending on whether or not there are items in the <code>heap</code></p>
+<p>Implement <code>empty</code>.
+Comment out the other unimplemented functions to make sure you copied everything over correctly.
+Run a simple test to make sure it works.</p>
+<h2 id="exercise-2">Exercise 2</h2>
+<p><code>push</code> adds elements to the <code>heap</code>.
+<code>top</code> gets the top element of the <code>heap</code>.
+<code>heapify</code> takes a vector of elements and adds them to the heap.</p>
+<p>Implement <code>push</code>, <code>top</code>, and <code>heapify</code>.
+See <a href="https://gist.github.com/CrazyWearsPJs/4c7ad50a5cd973e2e9c2">this gist</a> for some test test harnesses.
+Feel free to write your own as well.
+Comment out the tests that use <code>pop</code>.</p>
+<h2 id="exercise-3">Exercise 3</h2>
+<p><code>pop</code> removes the top element of the <code>heap</code>.</p>
+<p>Implement <code>pop</code> and run all the tests on your code.</p>
             </div>
           </div>
           <footer>
@@ -226,7 +246,7 @@ class MinHeap {
 
 <!--
 MkDocs version  : 0.12.1
-Docs Build Date : 2015-05-12 05:17:59.331548
+Docs Build Date : 2015-05-12 05:35:02.883606
 -->
 </body>
 </html>
