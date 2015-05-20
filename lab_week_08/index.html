@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lab Week 8 - CS14 SI Labs: Spring 2015</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CS14 SI Labs: Spring 2015</a>
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <ul class="current">
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="..">Home</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_01/">Lab Week 1</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_02/">Lab Week 2</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_03/">Lab Week 3</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_04/">Lab Week 4</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_05/">Lab Week 5</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_06/">Lab Week 6</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../lab_week_07/">Lab Week 7</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 current">
+                <a class="current" href="./">Lab Week 8</a>
+                
+                    <ul>
+                    
+                        <li class="toctree-l3"><a href="#lab-week-8-quicksort">Lab Week 8: QuickSort</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-1">Exercise 1</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-2">Exercise 2</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-3">Exercise 3</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-4">Exercise 4</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-5">Exercise 5</a></li>
+                        
+                            <li><a class="toctree-l4" href="#exercise-6">Exercise 6</a></li>
+                        
+                            <li><a class="toctree-l4" href="#stretch-exercise-1">Stretch Exercise 1</a></li>
+                        
+                            <li><a class="toctree-l4" href="#stretch-exercise-2">Stretch Exercise 2</a></li>
+                        
+                            <li><a class="toctree-l4" href="#stretch-exercise-3">Stretch Exercise 3</a></li>
+                        
+                    
+                    </ul>
+                
+            </li>
+        
+
+    
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CS14 SI Labs: Spring 2015</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+    <li>Lab Week 8</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              <h1 id="lab-week-8-quicksort">Lab Week 8: QuickSort</h1>
+<p>Today you will be implementing Quicksort.
+For a mediocre visualization on how Quicksort works, go <u><a href="http://algoviz.org/OpenDSA/AV/Sorting/quicksortAV.html" target="_blank">here</a></u>.</p>
+<p>The general algorithm for quicksort:</p>
+<pre><code class="python">def Quicksort(L):
+    # lists of size 1 or less
+    # are sorted by definition
+    if (len(L) &lt;= 1):
+        return
+
+    # select pivot index using
+    # the list of elements
+    pivot = selectPivot(L)
+
+    # partition into two halves
+    # using the pivot value
+    partIdx = partition(L, pivot)
+
+    # recursively sort the left
+    # and right sublists
+    Quicksort(L[:partIdx])
+    Quicksort(L[partIdx:])
+</code></pre>
+
+<p>Declarations for lab today:</p>
+<pre><code class="c++">#include &lt;utility&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+
+/*
+ * takes three values and uses comp to put them in sorted order.
+ * the median ends up at b.
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+void median_of_three(T &amp; a, T &amp; b, T &amp; c, Compare comp = Compare());
+
+/*
+ * partitions v from first to last using mid as the pivot
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+int partition(std::vector&lt;T&gt; &amp; v, int first, int mid, int last, Compare comp = Compare());
+
+/*
+ * same as other partition;
+ * creates two vectors for the left and right, then puts all the elements (except for mid)
+ * in the two. Then, they are put back in v so that v is partitioned, and returns the
+ * index of the pivot value.
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+int naive_partition(std::vector&lt;T&gt; &amp; v, int first, int mid, int last, Compare comp = Compare());
+
+/*
+ * uses the median of three pivot selection method, and the naive partition method
+ * to implement quicksort
+ *
+ * has a base case of a list of size 1 or fewer
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+void naive_quicksort(std::vector&lt;T&gt; &amp; v, int first, int last, Compare comp = Compare());
+
+/*
+ * overload
+ */
+template&lt;typename T&gt;
+void naive_quicksort(std::vector&lt;T&gt; &amp; v) {
+    naive_quicksort(v, 0, v.size());
+}
+
+/*
+ * uses the median of three pivot selection method, and the faster partition method
+ *
+ * has a base case of a list of size 1 or fewer
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+void quicksort(std::vector&lt;T&gt; &amp; v, int first, int last, Compare comp = Compare());
+
+/*
+ * overload
+ */
+template&lt;typename T&gt;
+void quicksort(std::vector&lt;T&gt; &amp; v) {
+    quicksort(v, 0, v.size());
+}
+
+/*
+ * InsertionSort
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+void insertionsort(std::vector&lt;T&gt; &amp; v, int first, int last, Compare comp = Compare()) {
+    for(int sorted = first + 1; sorted &lt; last; ++sorted) {
+        for(int i = sorted; i &gt; first &amp;&amp; comp(v.at(i), v.at(i-1)); --i) {
+            std::swap(v.at(i), v.at(i-1));
+        }
+    }
+}
+
+/*
+ * overload
+ */
+template&lt;typename T&gt;
+void insertionsort(std::vector&lt;T&gt; &amp; v) {
+    insertionsort(v, 0, v.size());
+}
+
+/*
+ * uses the median of three pivot selection method and the faster partition method
+ *
+ * insertion sort is called for reasonably small lists
+ */
+template&lt;typename T, typename Compare = std::less&lt;T&gt;&gt;
+void faster_quicksort(std::vector&lt;T&gt; &amp; v, int first, int last, Compare comp = Compare());
+
+/*
+ * overload
+ */
+template&lt;typename T&gt;
+void faster_quicksort(std::vector&lt;T&gt; &amp; v) {
+    faster_quicksort(v, 0, v.size());
+}
+
+</code></pre>
+
+<p><u><a href="https://gist.github.com/CrazyWearsPJs/3138795e59a3189df5e7" target="_blank">An example test harness.</a></u></p>
+<h2 id="exercise-1">Exercise 1</h2>
+<p>Create the median_of_three function for selecting the pivot value.
+Discuss with the people around you which three values you should pass into this function to find the best pivot value.</p>
+<p>Don't forget to test it!</p>
+<h2 id="exercise-2">Exercise 2</h2>
+<p>Create the naive_partition method.
+Test it.</p>
+<h2 id="exercise-3">Exercise 3</h2>
+<p>Create naive_quicksort</p>
+<p>Test it!</p>
+<h2 id="exercise-4">Exercise 4</h2>
+<p>Create partition</p>
+<p>Test it!1!!</p>
+<h2 id="exercise-5">Exercise 5</h2>
+<p>Create quicksort</p>
+<p>Test it!</p>
+<h2 id="exercise-6">Exercise 6</h2>
+<p>Create faster_quicksort</p>
+<p>You are now able to run the example test harness. Do it. It is amazing.</p>
+<h2 id="stretch-exercise-1">Stretch Exercise 1</h2>
+<p>tba</p>
+<h2 id="stretch-exercise-2">Stretch Exercise 2</h2>
+<p>tba</p>
+<h2 id="stretch-exercise-3">Stretch Exercise 3</h2>
+<p>tba</p>
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../lab_week_07/" class="btn btn-neutral" title="Lab Week 7"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    <!-- Copyright etc -->
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        
+      <span><a href="../lab_week_07/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="" style="color: #fcfcfc">Next &raquo;</a></span>
+    </span>
+</div>
+
+<!--
+MkDocs version  : 0.12.1
+Docs Build Date : 2015-05-20 15:18:27.892732
+-->
+</body>
+</html>
