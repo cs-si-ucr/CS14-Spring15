@@ -54,26 +54,26 @@ now add other useful attributes to each vertex to help us with our
 algorithms. For example, a color attribute for use with a graph
 coloring algorithm or a visited attribute for a graph traversal
 algorithm. The implementation consists of three classes; the 
-`Adjacency_List` class, the `Virtex` class and the `Edge` class. 
-If you notice in the example below, the Virtex class contains a list
+`Adjacency_List` class, the `Vertex` class and the `Edge` class. 
+If you notice in the example below, the Vertex class contains a list
 of edges and the Edge class contains a pointer to both a starting 
 and ending vertex.
 
 ```cpp
-class Virtex{
+class Vertex{
     private:
         vector<Edge*> Adjacencys;
         int color;
         bool visited;
     public:
-        Virtex();
-        ~Virtex();
+        Vertex();
+        ~Vertex();
 };
 
 class Edge{
     private:
-        Virtex *from;
-        Virtex *to;
+        Vertex *from;
+        Vertex *to;
         int weight;
     public:
         Edge();
@@ -82,11 +82,11 @@ class Edge{
 
 class AdjacencyList{
     private:
-        vector<Virtex*> Vertices;
+        vector<Vertex*> Vertices;
     public:
         Graph();
         ~Graph();
-        void add_edge(Virtex *from, Virtex *to, int weight);
+        void add_edge(Vertex *from, Vertex *to, int weight);
         void add_edge(int from, int to, int weight);
         void display();
         /* etc. */
