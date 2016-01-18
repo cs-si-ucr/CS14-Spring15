@@ -8,6 +8,8 @@
   <title>Lab Week 9 - CS14 SI Labs: Spring 2015</title>
   
 
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
   
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
@@ -15,16 +17,18 @@
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Lab Week 9";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
   <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script>
+  <script src="../js/theme.js"></script> 
 
-  <style>
-    body {font-size: 90%;}
-    pre, code {font-size: 100%;}
-    h3, h4, h5, h6 {color: #2980b9; font-weight: 300}
-  </style> 
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -35,77 +39,106 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> CS14 SI Labs: Spring 2015</a>
-        
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-      <ul class="current">
-    
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_01">Lab Week 1</a>
-            </li>
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_01/">Lab Week 1</a>
         
-
-    
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_02/">Lab Week 2</a>
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_02">Lab Week 2</a>
-            </li>
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_03/">Lab Week 3</a>
         
-
-    
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_04/">Lab Week 4</a>
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_03">Lab Week 3</a>
-            </li>
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_05/">Lab Week 5</a>
         
-
-    
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_06/">Lab Week 6</a>
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_04">Lab Week 4</a>
-            </li>
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_07/">Lab Week 7</a>
         
-
-    
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../lab_week_08/">Lab Week 8</a>
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_05">Lab Week 5</a>
-            </li>
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Lab Week 9</a>
         
-
-    
+            <ul>
+            
+                <li class="toctree-l3"><a href="#lab-week-9-graphs">Lab Week 9: Graphs</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementation">Implementation</a></li>
+                
+                    <li><a class="toctree-l4" href="#dfs-and-bfs">DFS and BFS</a></li>
+                
+                    <li><a class="toctree-l4" href="#exercise-1">Exercise 1</a></li>
+                
+                    <li><a class="toctree-l4" href="#exercise-2">Exercise 2</a></li>
+                
+                    <li><a class="toctree-l4" href="#exercise-3">Exercise 3</a></li>
+                
+                    <li><a class="toctree-l4" href="#stretch-goal-exercise">Stretch-goal exercise:</a></li>
+                
+            
+            </ul>
         
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_06">Lab Week 6</a>
-            </li>
-        
-
-    
-        
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_07">Lab Week 7</a>
-            </li>
-        
-
-    
-        
-            <li class="toctree-l1 ">
-                <a class="" href="../lab_week_08">Lab Week 8</a>
-            </li>
-        
-
-    
-        
-            <li class="toctree-l1 current">
-                <a class="current" href=".">Lab Week 9</a>
-            </li>
-        
-
-    
-</ul>
-
+    </li>
+<li>
+          
+        </ul>
       </div>
       &nbsp;
     </nav>
@@ -114,8 +147,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
-        <a href=".."></a>
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CS14 SI Labs: Spring 2015</a>
       </nav>
 
       
@@ -124,16 +157,20 @@
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
     <li>Lab Week 9</li>
-      <li class="wy-breadcrumbs-aside">
-        
-      </li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
   </ul>
   <hr/>
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="lab-week-9-graphs">Lab Week 9: Graphs</h1>
+              
+                <h1 id="lab-week-9-graphs">Lab Week 9: Graphs</h1>
 <p>Graphs are defined as consisting of a set <code>V</code> of vertices
 and a set <code>E</code> of edges. Edges are further defined as being
 either an ordered pair of vertices (in the case of a directed
@@ -235,7 +272,7 @@ them.</p>
 <h2 id="stretch-goal-exercise">Stretch-goal exercise:</h2>
 <p>Can you come up with an algorithm that finds the shortest
 path between two given vertices?</p>
-
+              
             </div>
           </div>
           <footer>
@@ -243,7 +280,7 @@ path between two given vertices?</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../lab_week_08" class="btn btn-neutral" title="Lab Week 8"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../lab_week_08/" class="btn btn-neutral" title="Lab Week 8"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -251,9 +288,8 @@ path between two given vertices?</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>
     <!-- Copyright etc -->
-    </p>
+    
   </div>
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
@@ -268,10 +304,13 @@ path between two given vertices?</p>
 
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
-        
-      <span><a href="../lab_week_08" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      <span style="margin-left: 15px"><a href="" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+      
+        <span><a href="../lab_week_08/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
     </span>
 </div>
+
 </body>
 </html>
